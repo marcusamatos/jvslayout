@@ -1,0 +1,32 @@
+{
+    "name": "marcusamatos/jvslayout",
+    "description": "JvsLayout provides a suite of classes to layout manager.",
+    "type": "zf-module",
+    "keywords": [
+        "jvs",
+        "jvslayout",
+        "developer",
+        "zf2",
+        "module",
+        "zendframework2"
+    ],
+    "homepage": "https://github.com/marcusamatos/jvslayout",
+    "authors": [
+        {
+            "name": "Marcus Matos",
+            "email": "marcusamatos@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": ">=2.2.0",
+    },
+    "autoload": {
+        "psr-0": {
+            "JvsRequire": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
