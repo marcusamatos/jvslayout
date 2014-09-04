@@ -1,32 +1,29 @@
 JvsLayout
 =========
 
-Version 0.0.1 created by Marcus Matos.
-
 ## Introduction
 
-JvsLayout provides a suite of classes to layout management.
+JvsLayout provides a suite of classes to ZF2 MVC application layout.
 
 ## Requirements
 
-* Zend Framework 2
+* Zend Framework 2 MVC Application
 
 
 ## Instalation
 
-Simply clone this project into your `./vendor/` directory and enable it in your
-`./config/application.config.php` file.
+Add `"marcusamatos/jvslayout": "0.*"` to composer.json and update
 
 ## Provided Classes
 
 1. JvsLayout\EventListener\LayoutRouteListener
 
 
-## 1 - JvsLayout\EventListener\LayoutRouteListener
+### 1 - JvsLayout\EventListener\LayoutRouteListener
 
 Auto select a layout by matched route name.
 
-### How it works:
+#### How it works:
 
 if route == "public" then layout = "layout/public"
 
@@ -34,11 +31,13 @@ if route == "public/product" then layout = "layout/public"
 
 if route == "public-product/new" then layout = "layout/public-product" or "layout/public"
 
-### How to use
+#### How to use
 
 Attach JvsLayout\EventListener\LayoutRouteListener to EventListener on Module.php like this:
 
+
 ```php
+
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
@@ -47,4 +46,5 @@ Attach JvsLayout\EventListener\LayoutRouteListener to EventListener on Module.ph
 
         $eventManager->attach(new LayoutRouteListener());
     }
+
 ```

@@ -10,29 +10,12 @@ class LayoutRouteListener implements ListenerAggregateInterface {
 
     protected $listeners = array();
 
-    /**
-     * Attach one or more listeners
-     *
-     * Implementors may add an optional $priority argument; the EventManager
-     * implementation will pass this to the aggregate.
-     *
-     * @param EventManagerInterface $events
-     *
-     * @return void
-     */
     public function attach(EventManagerInterface $events)
     {
         $sharedManager = $events->getSharedManager();
         $sharedManager->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', array($this, 'layoutChange'), 100);
     }
 
-    /**
-     * Detach all previously attached listeners
-     *
-     * @param EventManagerInterface $events
-     *
-     * @return void
-     */
     public function detach(EventManagerInterface $events)
     {
         foreach ($this->listeners as $index => $listener) {

@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-0": {
-            "JvsRequire": "src/"
+            "JvsLayout": "src/"
         },
         "classmap": [
             "./Module.php"
