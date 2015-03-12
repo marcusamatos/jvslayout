@@ -1,50 +1,55 @@
 JvsLayout
 =========
 
-## Introduction
+# Introduction
 
-JvsLayout provides a suite of classes to ZF2 MVC application layout.
+JvsLayout change layout by route and uri
 
-## Requirements
+# Requirements
 
-* Zend Framework 2 MVC Application
+* Zend Framework 2
 
+# Instalation
 
-## Instalation
+Add `"marcusamatos/jvslayout": "1.*"` to composer.json and update
 
-Add `"marcusamatos/jvslayout": "0.*"` to composer.json and update
+# How to use
 
-## Provided Classes
+## By Route Default:
 
-1. JvsLayout\EventListener\LayoutRouteListener
+```php
 
+return array(
+    'router' => array(
+        'routes' => array(
+            'home' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                'route'    => '/',
+                'defaults' => array(
+                    'controller' => 'Application\Controller\Index',
+                    'action'     => 'index',
+                    'layout'     => 'layout/home'
+                ),
+            ),
+        )
+    )
+);
 
-### 1 - JvsLayout\EventListener\LayoutRouteListener
+```
 
-Auto select a layout by matched route name.
-
-#### How it works:
-
-if route == "public" then layout = "layout/public"
-
-if route == "public/product" then layout = "layout/public"
-
-if route == "public-product/new" then layout = "layout/public-product" or "layout/public"
-
-#### How to use
-
-Attach JvsLayout\EventListener\LayoutRouteListener to EventListener on Module.php like this:
+## By Config:
 
 
 ```php
 
-    public function onBootstrap(MvcEvent $e)
-    {
-        $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
-
-        $eventManager->attach(new LayoutRouteListener());
-    }
+return array(
+    'jvs-layout' => array(
+        'uri' => array(
+            '/news' => 'layout/news',
+            '/admin*' => 'layout/admin'
+        );
+    );
+);
 
 ```
